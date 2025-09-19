@@ -448,13 +448,6 @@ def convert_opus_to_mp3(input_file, output_file):
         print(f"Tipo de error: {type(e).__name__}")
         return False
 
-# Ejecutar la conversión con diagnóstico
-resultado = convert_opus_to_mp3("nota-de-voz.opus", "nota-de-voz.mp3")
-
-
-# In[21]:
-
-
 def tu_upload_corregido(files):
 
     """Tu función upload corregida"""
@@ -466,9 +459,8 @@ def tu_upload_corregido(files):
     return file_paths[0]
 
 def transformar_audio(file_output):
-    print(file_output)
     format_file = file_output.split(".")[-1]
-    if format_file == ".opus":
+    if format_file == "opus":
         route_to_mp3 = "./voice-note.mp3"
         has_transformed_to_mp3 = convert_opus_to_mp3(file_output, route_to_mp3)
         if not has_transformed_to_mp3:
@@ -478,13 +470,13 @@ def transformar_audio(file_output):
     transcription = openai.audio.transcriptions.create(model=AUDIO_MODEL, file=audio_file, response_format="text")
     # transcrito ahora a generar correctamente el documento
     response = call_claude([{ "role": "user", "content": transcription }])
-    if format_file == ".opus":
+    if format_file == "opus":
         os.remove(route_to_mp3)
     return response.content[0].text
 
 with gr.Blocks() as demo:
     with gr.Column():
-        file_output = gr.File(file_types=["audio", "video"])
+        file_output = gr.File(file_types=[".mp3", ".opus", ".ogg"])
         upload_button = gr.UploadButton("Click to Upload a File", file_types=["audio", "video"], file_count="multiple")
     with gr.Column():
         transformar_button = gr.Button("Transformar Audio", variant="primary")
@@ -505,5 +497,5 @@ with gr.Blocks() as demo:
         inputs= file_output,             # no hay entradas
         outputs=markdown_output  # dónde mostrar resultado
     )
-demo.launch(server_port=3000)
+demo.launch()
 

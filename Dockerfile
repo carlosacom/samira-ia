@@ -7,5 +7,8 @@ RUN pip install -r requirements.txt
 
 COPY . .
 
+EXPOSE 7860
+ENV GRADIO_SERVER_NAME="0.0.0.0"
+
 CMD ["python", "main.py"]
 
