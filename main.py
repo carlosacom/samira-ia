@@ -46,7 +46,7 @@ AUDIO_MODEL = "whisper-1"
 
 # In[3]:
 
-
+'''
 system_message = """
 
 ## IDENTIDAD Y FUNCIÓN PRINCIPAL
@@ -196,13 +196,14 @@ Cuando recibas una transcripción, responderás con:
 no necesitas hablarme solo debes de generarel informe
 
 """
+'''
 
 
 # In[ ]:
 
 
 # Constants
-'''
+
 system_message = """
 # PROMPT PARA SAMIRA - ASISTENTE ESPECIALIZADA EN TRANSCRIPCIÓN EJECUTIVA
 
@@ -334,7 +335,7 @@ Cuando recibas una transcripción, responderás con:
 
 **Estás lista para procesar transcripciones y generar documentos ejecutivos de máxima calidad para KumoSoft. Cada documento que produces refleja profesionalismo, precisión y valor estratégico para la toma de decisiones directivas.**
 """
-'''
+
 
 
 # In[4]:
