@@ -349,7 +349,7 @@ def call_claude(messages):
         })
     return claude.messages.create(
         model=CLAUDE_MODEL,
-        max_tokens=10000,
+        max_tokens=4096,
         temperature=0.2,
         system=system_message,
         messages=clean,
